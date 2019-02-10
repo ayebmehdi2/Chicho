@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "783339541974",
+    "firebase_url": "https://chat-6272a.firebaseio.com",
+    "project_id": "chat-6272a",
+    "storage_bucket": "chat-6272a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783339541974:android:6409cb24a31b649c",
+        "android_client_info": {
+          "package_name": "com.mehdi.kikkik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783339541974-a0ucjb1sruia9n4r2q80mcp91v7rm8jr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mehdi.kikkik",
+            "certificate_hash": "c0a64e2807b065530241f6cf1cd31318d7efca75"
+          }
+        },
+        {
+          "client_id": "783339541974-bq4jtn9o2qk4hc21e17t9nuan34qi5nc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3b8byvTj_MymM2lQQZc-HB6OaZ31hWiQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783339541974-bq4jtn9o2qk4hc21e17t9nuan34qi5nc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

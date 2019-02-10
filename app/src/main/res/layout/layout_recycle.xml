@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="110dp"
+            android:id="@+id/p"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/shidow_blue"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:layout_margin="10dp"
+                android:hint="Publich some thing"
+                android:id="@+id/content_share"
+                android:paddingStart="16dp"
+                android:background="@drawable/shidow_white"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:id="@+id/up"
+                    android:padding="10dp"
+                    android:background="@drawable/shidow_white"
+                    app:srcCompat="@drawable/ic_upload"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:padding="10dp"
+                    android:id="@+id/sh"
+                    android:background="@drawable/shidow_white"
+                    app:srcCompat="@drawable/ic_share"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="240dp"
+            android:id="@+id/recycler"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
