@@ -41,7 +41,22 @@ public class FragSearch extends Fragment implements AdapPerson.clickPrson {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(person);
+        return view;
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (childEventListener != null){
+            reference.removeEventListener(childEventListener);
+            childEventListener = null;
+            personList.clear();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         personList = new ArrayList<>();
         childEventListener = new ChildEventListener() {
             @Override
@@ -67,18 +82,6 @@ public class FragSearch extends Fragment implements AdapPerson.clickPrson {
         };
         reference.addChildEventListener(childEventListener);
 
-
-        return view;
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (childEventListener != null){
-            reference.removeEventListener(childEventListener);
-            childEventListener = null;
-            personList.clear();
-        }
     }
 
     @Override
