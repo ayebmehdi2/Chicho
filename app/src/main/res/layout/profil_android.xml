@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark">
+
+                <ImageView
+                    android:id="@+id/setting_vector"
+                    android:layout_width="50dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="-13dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_settings_black_24dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/setting" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp">
+
+                    <ImageView
+                        android:id="@+id/i"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/d"
+                        android:scaleType="centerCrop" />
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:scaleType="centerCrop"
+                        android:layout_height="60dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:srcCompat="@drawable/ic_top_start"/>
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_top_end"/>
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:scaleType="centerCrop"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:srcCompat="@drawable/ic_buttom_start"/>
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_buttom_end"/>
+                </android.support.constraint.ConstraintLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="#FAFAFA"
+                    android:id="@+id/n"
+                    android:text="Mehdi"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="#eee"
+                    android:text="My Name Is Mehdi I adore coding thankss !!"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorPrimary"/>
+
+            <LinearLayout
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="55dp"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/maine"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="maine"
+                    android:padding="10dp"
+                    android:background="@drawable/show"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_menu"/>
+
+                <ImageView
+                    android:id="@+id/ami"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:onClick="ami"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_add_friend_2"/>
+
+
+                <ImageView
+                    android:id="@+id/cam"
+                    android:onClick="cam"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_photo_camera_2"/>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_profil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

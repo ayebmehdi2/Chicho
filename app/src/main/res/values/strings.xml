@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">kik kik</string>
     <string name="uid">null</string>
+    <string name="write">Write what in your mind ..</string>
+    <string name="log_out">Log out</string>
+    <string name="search">Search</string>
+    <string name="setting">setting</string>
 </resources>

@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,10 +15,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mehdi.kikkik.Profile.UserProfile;
+import com.mehdi.kikkik.Search.FragSearch;
 import com.mehdi.kikkik.databinding.ActivityMainBinding;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainFragment.clickMainFragment{
 
 
     ActivityMainBinding binding;
@@ -31,18 +32,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        if (name != null) binding.name.setText(name);
-        if (imgUri != null) Picasso.get().load(Uri.parse(imgUri)).into(binding.acc);
-
-        getSupportFragmentManager().beginTransaction().add(R.id.frag, new MainFragment()).commit();
-
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String uid = preferences.getString(getString(R.string.uid), null);
         if (uid != null){
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("USERS").child(uid);
-
             final SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-
             DatabaseReference nameRefrence = reference.child("name");
             nameRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -50,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                     String na = dataSnapshot.getValue(String.class);
                     if (na != null){
                         name = na;
-                        binding.name.setText(name);
                         editor.putString("name", name);
                         editor.apply();
                     }
@@ -58,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
-
             DatabaseReference imgRefrence = reference.child("img");
             imgRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -74,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
-
             final DatabaseReference numPostRef = reference.child("numPost");
             numPostRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -89,11 +80,37 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
             editor.apply();
         }else {
             startActivity(new Intent(this, SignUpActivity.class));
         }
+
+        if (savedInstanceState != null) return;
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frag, new MainFragment()).commit();
+
+        if (imgUri != null) Picasso.get().load(Uri.parse(imgUri)).into(binding.acc);
+
+        binding.acc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UserProfile.class));
+            }
+        });
+
+        binding.serT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.serT.setVisibility(View.GONE);
+                binding.serM.setVisibility(View.VISIBLE);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag, new FragSearch()).commit();
+            }
+        });
+    }
+
+    public void defSear(){
+        binding.serT.setVisibility(View.VISIBLE);
+        binding.serM.setVisibility(View.GONE);
     }
 
     public void main(View view){
@@ -101,16 +118,14 @@ public class MainActivity extends AppCompatActivity {
         binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy));
         binding.main.setBackgroundResource(R.drawable.show);
         MainFragment mainFragment = new MainFragment();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frag, mainFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag, mainFragment).commit();
     }
 
-    public void search(View view){
+    public void messaging(View view){
         defaul();
-        binding.sear.setImageDrawable(getResources().getDrawable(R.drawable.top));
-        binding.sear.setBackgroundResource(R.drawable.show);
+        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging));
+        binding.msg.setBackgroundResource(R.drawable.show);
         //getSupportFragmentManager().beginTransaction().replace(0, null).commit();
-
-
     }
 
     public void not(View view){
@@ -121,11 +136,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void defaul(){
+        defSear();
         binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy_2));
         binding.main.setBackgroundResource(0);
-        binding.sear.setImageDrawable(getResources().getDrawable(R.drawable.top_2));
-        binding.sear.setBackgroundResource(0);
+        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging_2));
+        binding.msg.setBackgroundResource(0);
         binding.not.setImageDrawable(getResources().getDrawable(R.drawable.ic_bell_2));
         binding.not.setBackgroundResource(0);
+    }
+
+    @Override
+    public void postActivity() {
+        startActivity(new Intent(this, PostActivity.class));
     }
 }

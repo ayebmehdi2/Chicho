@@ -2,14 +2,22 @@ package com.mehdi.kikkik;
 
 public class DARNA {
 
+    private String uid;
     private String name;
     private String img;
     private int numPost;
 
-    public DARNA(String name, String img, int numPost){
+    public DARNA(){}
+
+    DARNA(String uid ,String name, String img, int numPost){
+        this.uid = uid;
         this.name = name;
         this.img = img;
         this.numPost = numPost;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public int getNumPost() {

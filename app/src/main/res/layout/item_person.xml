@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="100dp"
+        android:src="@drawable/d"
+        android:padding="20dp"
+        android:layout_height="match_parent"
+        android:id="@+id/im"
+        />
+
+
+    <TextView
+        android:id="@+id/user_name"
+        app:layout_constraintTop_toTopOf="@+id/im"
+        app:layout_constraintStart_toEndOf="@id/im"
+        android:layout_marginTop="40dp"
+        android:text="Mehdi"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_follower"
+        android:padding="15dp"
+        android:id="@+id/follow"
+        android:layout_width="60dp"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/msg_to_person"
+        app:layout_constraintEnd_toStartOf="@id/follow"
+        app:layout_constraintTop_toTopOf="@id/follow"
+        app:srcCompat="@drawable/ic_messaging"
+        android:padding="15dp"
+        android:layout_width="60dp"
+        android:layout_height="match_parent" />
+
+</android.support.constraint.ConstraintLayout>

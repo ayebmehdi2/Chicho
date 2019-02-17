@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -21,7 +20,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
 
     private ArrayList<DATA_POST> data_posts;
 
-    interface Click{
+    public interface Click{
         void like(String uid);
         void comment(String uid);
         void user(String uid);
@@ -29,13 +28,13 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
 
     class holder extends RecyclerView.ViewHolder {
 
-
         ImageView userImage;
         TextView userName;
         ImageView like;
         TextView time;
         ImageView comment;
         TextView content;
+        ImageView imageContent;
         TextView numLike;
         TextView numComment;
         public holder(@NonNull View itemView) {
@@ -47,8 +46,9 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
             content = itemView.findViewById(R.id.content);
             numLike = itemView.findViewById(R.id.num_likes);
             numComment = itemView.findViewById(R.id.num_comment);
+            imageContent = itemView.findViewById(R.id.ci);
             time = itemView.findViewById(R.id.time);
-/*
+
                 like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -68,7 +68,6 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
                     }
 
              });
-             */
         }
 
 
@@ -96,8 +95,25 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
 
     @Override
     public void onBindViewHolder(@NonNull holder holder, int i) {
-            DATA_POST post = data_posts.get(i);
+        DATA_POST post = data_posts.get(i);
+
+        if (post == null) return;
+        if (post.getContent() == null && post.getContentImage() == null) return;
+
+        if (post.getContent() != null) {
+            holder.content.setVisibility(View.VISIBLE);
             holder.content.setText(post.getContent());
+        }else {
+            holder.content.setVisibility(View.GONE);
+        }
+
+
+        if (post.getContentImage() != null) {
+            holder.imageContent.setVisibility(View.VISIBLE);
+            Picasso.get().load(post.getContentImage()).into(holder.imageContent);
+        }else {
+            holder.imageContent.setVisibility(View.GONE);
+        }
 
         Picasso.get().load(Uri.parse(post.getImg())).into(holder.userImage);
         holder.userName.setText(post.getName());

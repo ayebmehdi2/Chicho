@@ -7,6 +7,7 @@ public class DATA_POST {
     private String name;
     private int time;
     private String content;
+    private String contentImage;
     private int numLike;
     private int numComment;
     private boolean isLike;
@@ -14,18 +15,26 @@ public class DATA_POST {
 
     public DATA_POST(){}
 
-    DATA_POST(String idPost, String img, String name, int time, String content, int numLike, int numComment, boolean isLike, boolean isComment){
+    DATA_POST(String idPost, String img, String name, int time, String content, String contentImage, int numLike, int numComment, boolean isLike, boolean isComment){
         this.uid = idPost;
         this.img = img;
         this.name = name;
         this.time = time;
         this.content = content;
+        this.contentImage = contentImage;
         this.numLike = numLike;
         this.numComment = numComment;
         this.isLike = isLike;
         this.isComment = isComment;
     }
 
+    public String getContentImage() {
+        return contentImage;
+    }
+
+    public void setContentImage(String contentImage) {
+        this.contentImage = contentImage;
+    }
 
     public String getName() {
         return name;

@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if (!dataSnapshot.exists()) {
                         String name = user.getDisplayName();
                         Uri img = user.getPhotoUrl();
-                        reference.child(uid).setValue(new DARNA(name, img.toString(), 0));
+                        reference.child(uid).setValue(new DARNA(uid, name, img.toString(), 0));
                         preferences.putBoolean("hasProfile", true);
                     }
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="100dp"
+        android:src="@drawable/d"
+        android:padding="15dp"
+        android:layout_height="match_parent"
+        android:id="@+id/im_"
+        />
+
+    <TextView
+        android:id="@+id/username"
+        app:layout_constraintTop_toTopOf="@id/im_"
+        app:layout_constraintStart_toEndOf="@id/im_"
+        android:layout_marginTop="25sp"
+        android:textSize="18sp"
+        android:text="AYEB"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/msg"
+        app:layout_constraintBottom_toBottomOf="@id/im_"
+        app:layout_constraintStart_toEndOf="@id/im_"
+        android:layout_marginBottom="25sp"
+        android:textSize="18sp"
+        android:text="Hello Ayeb how are you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="25sp"
+        android:textSize="14sp"
+        android:text="9:00"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>
