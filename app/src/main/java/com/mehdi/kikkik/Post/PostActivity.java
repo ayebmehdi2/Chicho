@@ -118,10 +118,9 @@ public class PostActivity extends AppCompatActivity {
         }
     }
 
-
     public void uploadData(Uri uri){
         int numPost = preferences.getInt("numPost",1);
-        String chiledPost = uid + String.valueOf(numPost);
+        String chiledPost = uid;
         String contentText = null;
         String contentImage = null;
         if (binding.contentText.getText().toString().length() > 0) contentText = binding.contentText.getText().toString();

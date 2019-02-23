@@ -24,7 +24,10 @@ import com.mehdi.kikkik.Search.FragSearch;
 import com.mehdi.kikkik.databinding.ActivityMainBinding;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.clickMainFragment, FragSearch.ClickFragSearch, FragMessage.clickItem{
+public class MainActivity extends AppCompatActivity implements
+        MainFragment.clickMainFragment,
+        FragSearch.ClickFragSearch,
+        FragMessage.clickItem {
 
     private ActivityMainBinding binding;
     private String name = "Not Defined";
@@ -159,9 +162,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.clic
     }
 
     @Override
+    public void postComment(String uid) {
+        Intent i = new Intent(MainActivity.this, RoomChatAcivity.class);
+        i.putExtra("uid", uid);
+        i.putExtra("type", "comment");
+        startActivity(i);
+    }
+
+    @Override
     public void clickpp(String chN) {
         Intent i = new Intent(this, RoomChatAcivity.class);
         i.putExtra("uid", chN);
+        i.putExtra("type", "msg");
         startActivity(i);
     }
 
@@ -169,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.clic
     public void msg(String uid) {
         Intent i = new Intent(MainActivity.this, RoomChatAcivity.class);
         i.putExtra("uid", uid);
+        i.putExtra("type", "msg");
         startActivity(i);
     }
 

@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mehdi.kikkik.Profile.DARNA;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth auth;
 
     FirebaseAuth.AuthStateListener authStateListener;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,7 +150,6 @@ public class SignUpActivity extends AppCompatActivity {
             reference.removeEventListener(responseListener);
             Log.d("SignUpActivity", "Remove valueEventListener");
         }
-
 
     }
 }

@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mehdi.kikkik.Post.DATA_POST;
 import com.mehdi.kikkik.R;
 import com.mehdi.kikkik.databinding.RoomMessagingBinding;
 import com.squareup.picasso.Picasso;
@@ -38,12 +39,12 @@ public class RoomChatAcivity extends AppCompatActivity {
 
     private AdapMessage adapMessage;
     private ArrayList<Message> messages;
+    private int numComment = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.room_messaging);
-
 
         binding.yourName.setText(youName);
         Picasso.get().load(yourImage).into(binding.yourPh);
@@ -55,9 +56,47 @@ public class RoomChatAcivity extends AppCompatActivity {
 
         final String uid = getIntent().getStringExtra("uid");
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        referenceMsg = database.getReference().child("MESSAGS").child(uid);
-        referenceGlobal = database.getReference().child("PERSON_MESSAGE").child(uid);
+        final String typeChat = getIntent().getStringExtra("type");
+        if (typeChat.equals("comment")){
+            referenceMsg = database.getReference().child("POSTS").child(uid).child("COMMENT");
+            referenceGlobal = database.getReference().child("POSTS").child(uid);
+            listenerForUser = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    DATA_POST userInfo = dataSnapshot.getValue(DATA_POST.class);
+                    if (userInfo == null) return;
+                    youName = userInfo.getName();
+                    binding.yourName.setText(youName);
+                    yourImage = userInfo.getImg();
+                    Picasso.get().load(yourImage).into(binding.yourPh);
+                    numComment = userInfo.getNumComment();
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
+        }else {
+            referenceMsg = database.getReference().child("MESSAGS").child(uid);
+            referenceGlobal = database.getReference().child("PERSON_MESSAGE").child(uid);
+            listenerForUser = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
+                    if (userInfo == null) return;
+                    youName = userInfo.getYourPhoto();
+                    binding.yourName.setText(youName);
+                    yourImage = userInfo.getYouName();
+                    Picasso.get().load(yourImage).into(binding.yourPh);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            };
+        }
 
         listenerForUser = new ValueEventListener() {
             @Override
@@ -107,7 +146,12 @@ public class RoomChatAcivity extends AppCompatActivity {
                     Message message = new Message(preferences.getString("name", ""), preferences.getString("img", ""), content,null, (int) System.currentTimeMillis());
                     referenceMsg.push().setValue(message);
                     lastMesg = content;
-                    referenceGlobal.child("lastMessage").setValue(lastMesg);
+                    if (typeChat.equals("msg")){
+                        referenceGlobal.child("lastMessage").setValue(lastMesg);
+                    }else {
+                        referenceGlobal.child("isComment").setValue(true);
+                        referenceGlobal.child("numComment").setValue(numComment++);
+                    }
                 }
                     binding.contentEdit.setText("");
             }

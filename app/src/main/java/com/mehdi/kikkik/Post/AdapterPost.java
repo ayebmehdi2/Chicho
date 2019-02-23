@@ -22,7 +22,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
     private ArrayList<DATA_POST> data_posts;
 
     public interface Click{
-        void like(String uid);
+        void like(String uid, int numLike, ImageView like);
         void comment(String uid);
         void user(String uid);
     }
@@ -53,7 +53,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
                 like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        click.like(data_posts.get(getAdapterPosition()).getUid());
+                        click.like(data_posts.get(getAdapterPosition()).getUid(), data_posts.get(getAdapterPosition()).getNumLike(), like);
                     }
                 });
                 comment.setOnClickListener(new View.OnClickListener() {

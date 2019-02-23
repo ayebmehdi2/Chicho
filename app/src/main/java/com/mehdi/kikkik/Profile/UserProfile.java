@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mehdi.kikkik.R;
-import com.mehdi.kikkik.Setttting;
 import com.mehdi.kikkik.databinding.ProfilAndroidBinding;
 import com.squareup.picasso.Picasso;
 

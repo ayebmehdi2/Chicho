@@ -1,4 +1,4 @@
-package com.mehdi.kikkik;
+package com.mehdi.kikkik.Profile;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
+import com.mehdi.kikkik.R;
+import com.mehdi.kikkik.SignUpActivity;
 import com.mehdi.kikkik.databinding.SettingBinding;
 
 public class Setttting extends AppCompatActivity {

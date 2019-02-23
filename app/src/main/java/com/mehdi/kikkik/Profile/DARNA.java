@@ -1,4 +1,4 @@
-package com.mehdi.kikkik;
+package com.mehdi.kikkik.Profile;
 
 public class DARNA {
 
