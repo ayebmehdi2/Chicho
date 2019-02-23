@@ -8,7 +8,7 @@
     android:padding="5dp"
     android:layout_margin="10dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#EEE">
+    android:background="@drawable/aa_bachground_shodow">
 
         <ImageView
             android:visibility="gone"
@@ -21,7 +21,6 @@
 
         <TextView
             android:id="@+id/con_tex"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

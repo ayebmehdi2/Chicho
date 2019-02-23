@@ -15,15 +15,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mehdi.kikkik.Messaging.FragMessage;
+import com.mehdi.kikkik.Messaging.RoomChatAcivity;
+import com.mehdi.kikkik.Post.MainFragment;
+import com.mehdi.kikkik.Post.PostActivity;
 import com.mehdi.kikkik.Profile.UserProfile;
 import com.mehdi.kikkik.Search.FragSearch;
 import com.mehdi.kikkik.databinding.ActivityMainBinding;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.clickMainFragment{
+public class MainActivity extends AppCompatActivity implements MainFragment.clickMainFragment, FragSearch.ClickFragSearch, FragMessage.clickItem{
 
-
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     private String name = "Not Defined";
     private String imgUri = null;
 
@@ -85,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements MainFragment.clic
             startActivity(new Intent(this, SignUpActivity.class));
         }
 
-        if (savedInstanceState != null) return;
-
-        getSupportFragmentManager().beginTransaction().add(R.id.frag, new MainFragment()).commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.frag, new MainFragment()).commit();
+        }
 
         if (imgUri != null) Picasso.get().load(Uri.parse(imgUri)).into(binding.acc);
 
@@ -103,45 +106,50 @@ public class MainActivity extends AppCompatActivity implements MainFragment.clic
             public void onClick(View v) {
                 binding.serT.setVisibility(View.GONE);
                 binding.serM.setVisibility(View.VISIBLE);
+                defaul();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag, new FragSearch()).commit();
             }
         });
+
     }
 
     public void defSear(){
         binding.serT.setVisibility(View.VISIBLE);
         binding.serM.setVisibility(View.GONE);
+
     }
 
     public void main(View view){
         defaul();
-        binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy));
-        binding.main.setBackgroundResource(R.drawable.show);
+        defSear();
+        binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy_2));
+        binding.main.setBackgroundResource(R.drawable.show_2);
         MainFragment mainFragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag, mainFragment).commit();
     }
 
     public void messaging(View view){
         defaul();
-        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging));
-        binding.msg.setBackgroundResource(R.drawable.show);
-        //getSupportFragmentManager().beginTransaction().replace(0, null).commit();
+        defSear();
+        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging_2));
+        binding.msg.setBackgroundResource(R.drawable.show_2);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag, new FragMessage()).commit();
     }
 
     public void not(View view){
+        defSear();
         defaul();
-        binding.not.setImageDrawable(getResources().getDrawable(R.drawable.ic_bell));
-        binding.not.setBackgroundResource(R.drawable.show);
+        binding.not.setImageDrawable(getResources().getDrawable(R.drawable.ic_bell_2));
+        binding.not.setBackgroundResource(R.drawable.show_2);
         //getSupportFragmentManager().beginTransaction().replace(0, null).commit();
     }
 
     public void defaul(){
-        defSear();
-        binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy_2));
+        binding.main.setImageDrawable(getResources().getDrawable(R.drawable.ic_happy));
         binding.main.setBackgroundResource(0);
-        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging_2));
+        binding.msg.setImageDrawable(getResources().getDrawable(R.drawable.ic_messaging));
         binding.msg.setBackgroundResource(0);
-        binding.not.setImageDrawable(getResources().getDrawable(R.drawable.ic_bell_2));
+        binding.not.setImageDrawable(getResources().getDrawable(R.drawable.ic_bell));
         binding.not.setBackgroundResource(0);
     }
 
@@ -149,4 +157,19 @@ public class MainActivity extends AppCompatActivity implements MainFragment.clic
     public void postActivity() {
         startActivity(new Intent(this, PostActivity.class));
     }
+
+    @Override
+    public void clickpp(String chN) {
+        Intent i = new Intent(this, RoomChatAcivity.class);
+        i.putExtra("uid", chN);
+        startActivity(i);
+    }
+
+    @Override
+    public void msg(String uid) {
+        Intent i = new Intent(MainActivity.this, RoomChatAcivity.class);
+        i.putExtra("uid", uid);
+        startActivity(i);
+    }
+
 }

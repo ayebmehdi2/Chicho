@@ -1,4 +1,4 @@
-package com.mehdi.kikkik;
+package com.mehdi.kikkik.Post;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mehdi.kikkik.R;
 import com.mehdi.kikkik.databinding.LayoutRecycleBinding;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class MainFragment extends Fragment implements AdapterPost.Click {
     ArrayList<DATA_POST> list;
     private AdapterPost postAdapter;
 
-    interface clickMainFragment{
+    public interface clickMainFragment{
         void postActivity();
     }
 
@@ -49,7 +50,7 @@ public class MainFragment extends Fragment implements AdapterPost.Click {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         list = new ArrayList<>();
-        binding = DataBindingUtil.inflate(inflater,R.layout.layout_recycle, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_recycle, container, false);
         postAdapter = new AdapterPost(getContext(), this);
         binding.recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recycler.setHasFixedSize(true);

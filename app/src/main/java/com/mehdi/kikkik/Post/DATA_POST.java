@@ -1,4 +1,4 @@
-package com.mehdi.kikkik;
+package com.mehdi.kikkik.Post;
 
 public class DATA_POST {
 

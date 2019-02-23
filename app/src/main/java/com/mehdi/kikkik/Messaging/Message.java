@@ -2,7 +2,7 @@ package com.mehdi.kikkik.Messaging;
 
 public class Message {
 
-    private String userId;
+    private String name;
     private String userImage;
     private String conStr;
     private String conImg;
@@ -10,12 +10,16 @@ public class Message {
 
     public Message(){}
 
-    Message(String userId, String userImage, String conStr, String conImg, int time){
-        this.userId = userId;
+    Message(String name, String userImage, String conStr, String conImg, int time){
+        this.name = name;
         this.userImage = userImage;
         this.conStr = conStr;
         this.conImg = conImg;
         this.time = time;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getConImg() {
@@ -28,10 +32,6 @@ public class Message {
 
     public String getConStr() {
         return conStr;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public String getUserImage() {

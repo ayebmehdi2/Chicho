@@ -1,4 +1,4 @@
-package com.mehdi.kikkik;
+package com.mehdi.kikkik.Post;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mehdi.kikkik.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -121,14 +122,14 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.holder> {
         holder.numLike.setText(String.valueOf(post.getNumLike()));
         holder.numComment.setText(String.valueOf(post.getNumComment()));
         if (post.getIsLike()){
-            holder.like.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_like1));
-        }else {
             holder.like.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_like2));
+        }else {
+            holder.like.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_like1));
         }
         if (post.getIsComment()){
-            holder.comment.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_c1));
+            holder.comment.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_coment2));
         }else {
-            holder.comment.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_c));
+            holder.comment.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_coment1));
         }
     }
 

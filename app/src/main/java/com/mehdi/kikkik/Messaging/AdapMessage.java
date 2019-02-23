@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class AdapMessage extends RecyclerView.Adapter<AdapMessage.holder> {
 
-
     private ArrayList<Message> dataMessage = null;
 
     public void swapAdapter(ArrayList<Message> data){
@@ -33,9 +32,9 @@ public class AdapMessage extends RecyclerView.Adapter<AdapMessage.holder> {
         TextView cT;
         public holder(@NonNull View itemView) {
             super(itemView);
-            userI = itemView.findViewById(R.id.user);
-            cI = itemView.findViewById(R.id.ci);
-            cT = itemView.findViewById(R.id.ct);
+            userI = itemView.findViewById(R.id.usern);
+            cI = itemView.findViewById(R.id.cimage);
+            cT = itemView.findViewById(R.id.ctext);
 
 
         }
@@ -51,6 +50,15 @@ public class AdapMessage extends RecyclerView.Adapter<AdapMessage.holder> {
     public void onBindViewHolder(@NonNull holder holder, int i) {
         Message message = dataMessage.get(i);
 
+        Picasso.get().load(message.getUserImage()).into(holder.userI);
+
+        if (message.getConStr() != null){
+            holder.cT.setVisibility(View.VISIBLE);
+            holder.cT.setText(message.getConStr());
+        }else{
+            holder.cT.setVisibility(View.GONE);
+        }
+        /*
         if (message.getConStr() != null && message.getConImg() != null){
             holder.cI.setVisibility(View.VISIBLE);
             Picasso.get().load(message.getConImg()).into(holder.cI);
@@ -67,10 +75,8 @@ public class AdapMessage extends RecyclerView.Adapter<AdapMessage.holder> {
         }else {
             holder.cI.setVisibility(View.GONE);
             holder.cT.setVisibility(View.GONE);
-            return;
         }
-
-        Picasso.get().load(message.getUserImage()).into(holder.userI);
+        */
     }
 
     @Override

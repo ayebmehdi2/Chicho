@@ -19,7 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mehdi.kikkik.DATA_POST;
+import com.mehdi.kikkik.Post.DATA_POST;
 import com.mehdi.kikkik.R;
 
 import java.util.ArrayList;

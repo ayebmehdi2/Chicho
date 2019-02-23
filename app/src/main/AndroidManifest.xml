@@ -22,9 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".PostActivity"/>
+        <activity android:name=".Post.PostActivity"/>
         <activity android:name=".Profile.UserProfile"/>
         <activity android:name=".Setttting"/>
+        <activity android:name=".Messaging.RoomChatAcivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -20,7 +20,7 @@ private ArrayList<DataPerson> dataPerson = null;
 
 public interface clickPrson{
     void follow(String uid);
-    void msg(String uid);
+    void msg(DataPerson person);
 }
 
 private final clickPrson clickPrson;
@@ -60,7 +60,7 @@ class holder extends RecyclerView.ViewHolder{
         msgToPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickPrson.msg(dataPerson.get(getAdapterPosition()).getUid());
+                clickPrson.msg(dataPerson.get(getAdapterPosition()));
             }
         });
     }

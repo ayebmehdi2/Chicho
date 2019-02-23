@@ -27,7 +27,9 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     FirebaseAuth auth;
+
     FirebaseAuth.AuthStateListener authStateListener;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

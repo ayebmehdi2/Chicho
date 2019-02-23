@@ -1,31 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/user"
+        android:id="@+id/usern"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"
-        android:layout_width="50dp"
+        android:layout_margin="10dp"
+        android:layout_width="40dp"
         android:src="@drawable/d"
-        android:layout_height="50dp" />
+        android:layout_height="40dp" />
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="@id/usern"
+        app:layout_constraintStart_toStartOf="@id/usern"
+        app:srcCompat="@drawable/ic_top_start"/>
+    <ImageView
+        android:scaleType="centerCrop"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="@id/usern"
+        app:layout_constraintTop_toTopOf="@id/usern"
+        app:srcCompat="@drawable/ic_top_end"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/usern"
+        app:layout_constraintStart_toStartOf="@id/usern"
+        app:srcCompat="@drawable/ic_buttom_start"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/usern"
+        app:layout_constraintEnd_toEndOf="@id/usern"
+        app:srcCompat="@drawable/ic_buttom_end"/>
+
 
     <LinearLayout
-        app:layout_constraintTop_toTopOf="@id/user"
-        app:layout_constraintStart_toEndOf="@id/user"
+        app:layout_constraintTop_toTopOf="@id/usern"
+        app:layout_constraintStart_toEndOf="@id/usern"
         android:layout_width="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/ct"
-            android:visibility="gone"
+            android:id="@+id/ctext"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="280dp"
@@ -33,18 +62,17 @@
             android:background="@drawable/shidow_blue"
             android:padding="12dp"
             android:textColor="#616161"
-            android:textSize="16sp"
-
-            />
+            android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/ci"
+            android:id="@+id/cimage"
             android:layout_marginTop="5dp"
             android:visibility="gone"
             android:src="@drawable/d"
             android:scaleType="centerCrop"
             android:layout_width="280dp"
-            android:layout_height="250dp" />
+            android:maxHeight="200dp"
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

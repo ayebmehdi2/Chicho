@@ -12,19 +12,58 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_margin="16dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/userlogo"
-            android:src="@drawable/d"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="16dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/userlogo"
+                android:src="@drawable/d"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="@id/userlogo"
+                app:layout_constraintStart_toStartOf="@id/userlogo"
+                app:srcCompat="@drawable/ic_top_start"/>
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                app:layout_constraintEnd_toEndOf="@id/userlogo"
+                app:layout_constraintTop_toTopOf="@id/userlogo"
+                app:srcCompat="@drawable/ic_top_end"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                app:layout_constraintBottom_toBottomOf="@id/userlogo"
+                app:layout_constraintStart_toStartOf="@id/userlogo"
+                app:srcCompat="@drawable/ic_buttom_start"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@id/userlogo"
+                app:layout_constraintEnd_toEndOf="@id/userlogo"
+                app:srcCompat="@drawable/ic_buttom_end"/>
+
+        </android.support.constraint.ConstraintLayout>
 
 
         <TextView
+            android:layout_marginStart="16dp"
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/userlogo"
+            android:layout_toEndOf="@+id/l"
             android:text="Mehdi"
             android:layout_marginTop="30dp"
             android:textSize="18sp"
